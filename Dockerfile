@@ -102,6 +102,9 @@ RUN wget -O misc/GeoIPCity.dat.gz http://geolite.maxmind.com/download/geoip/data
 
 ADD assets/config.ini.php.docker /var/www/html/config/config.ini.php.docker
 
+# Piwik Cron
+ADD assets/piwik-archive /etc/cron.d/piwik-archive
+
 # Plugin WebsiteGroups
 RUN mkdir -p /var/www/html/plugins/WebsiteGroups && \
 	cd /var/www/html/plugins/WebsiteGroups && \
