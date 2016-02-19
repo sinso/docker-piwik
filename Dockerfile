@@ -112,6 +112,13 @@ RUN mkdir -p /var/www/html/plugins/WebsiteGroups && \
 	tar xzf WebsiteGroups.tar.gz --strip 1 && \
 	rm -f WebsiteGroups.tar.gz
 
+# Plugin ClickHeat
+RUN mkdir -p /var/www/html/plugins/ClickHeat && \
+        cd /var/www/html/plugins/ClickHeat && \
+        wget -O ClickHeat.tar.gz https://github.com/piwikjapan/plugin-clickheat/archive/0.1.5.tar.gz && \
+        tar xzf ClickHeat.tar.gz --strip 1 && \
+        rm -f ClickHeat.tar.gz
+
 
 
 ADD assets/entrypoint.sh /entrypoint.sh

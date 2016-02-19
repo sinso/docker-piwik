@@ -72,6 +72,7 @@ Plugins[] = Intl
 Plugins[] = DBStats
 
 Plugins[] = WebsiteGroups
+Plugins[] = ClickHeat
 
 [PluginsInstalled]
 PluginsInstalled[] = "Diagnostics"
@@ -130,3 +131,4 @@ PluginsInstalled[] = "DevicePlugins"
 PluginsInstalled[] = "DBStats"
 
 PluginsInstalled[] = "WebsiteGroups"
+PluginsInstalled[] = "ClickHeat"
