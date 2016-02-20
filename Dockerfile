@@ -89,7 +89,7 @@ RUN apt-get update \
 
 
 # Piwik
-ENV PIWIK_VERSION 2.14.3
+ENV PIWIK_VERSION 2.16.0
 
 RUN cd /var/www/html && \
 	curl -L -O http://builds.piwik.org/piwik-${PIWIK_VERSION}.tar.gz && \
@@ -108,7 +108,7 @@ ADD assets/piwik-archive /etc/cron.d/piwik-archive
 # Plugin WebsiteGroups
 RUN mkdir -p /var/www/html/plugins/WebsiteGroups && \
 	cd /var/www/html/plugins/WebsiteGroups && \
-	wget -O WebsiteGroups.tar.gz https://github.com/PiwikPRO/plugin-WebsiteGroups/archive/0.1.4.tar.gz && \
+	wget -O WebsiteGroups.tar.gz https://github.com/PiwikPRO/plugin-WebsiteGroups/archive/0.2.0.tar.gz && \
 	tar xzf WebsiteGroups.tar.gz --strip 1 && \
 	rm -f WebsiteGroups.tar.gz
 
