@@ -1,1 +1,1 @@
-6 * * * * www-data /usr/local/bin/php /var/www/html/misc/cron/archive.php
+6 * * * * www-data /usr/local/bin/php /var/www/html/console core:archive
