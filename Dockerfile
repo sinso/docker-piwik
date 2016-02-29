@@ -117,9 +117,12 @@ RUN mkdir -p /var/www/html/plugins/ClickHeat && \
         cd /var/www/html/plugins/ClickHeat && \
         wget -O ClickHeat.tar.gz https://github.com/piwikjapan/plugin-clickheat/archive/0.1.5.tar.gz && \
         tar xzf ClickHeat.tar.gz --strip 1 && \
-        rm -f ClickHeat.tar.gz
+        rm -f ClickHeat.tar.gz && \
+	mkdir -p /var/www/html/tmp/cache/clickheat/{logs,cache}
 
-
+# Set permissions
+RUN cd /var/www/html && \
+	chown -R www-data:www-data tmp config
 
 ADD assets/entrypoint.sh /entrypoint.sh
 
