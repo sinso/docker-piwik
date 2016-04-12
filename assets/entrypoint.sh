@@ -27,6 +27,7 @@ do
 	/bin/sed -i "s@{{ DB_NAME }}@${DB_ENV_MYSQL_DATABASE}@" ${SETTINGS_PATH}
 	/bin/sed -i "s@{{ DB_USER }}@${DB_ENV_MYSQL_USER}@" ${SETTINGS_PATH}
 	/bin/sed -i "s@{{ DB_PASSWORD }}@${DB_ENV_MYSQL_PASSWORD}@" ${SETTINGS_PATH}
+	/bin/chown www-data:www-data ${SETTINGS_PATH}
 done
 
 
