@@ -48,7 +48,7 @@ RUN docker-php-ext-install opcache
 # geoip
 RUN runtimeRequirements="libgeoip-dev" \
 	&& apt-get update && apt-get install -y ${runtimeRequirements} \
-	&& pecl install geoip \
+	&& pecl install geoip-1.1.1 \
 	&& echo "extension=geoip.so" > /usr/local/etc/php/conf.d/ext-geoip.ini \
 	&& rm -rf /var/lib/apt/lists/*
 
