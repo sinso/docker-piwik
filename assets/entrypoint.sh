@@ -17,12 +17,13 @@ cp /opt/docker/ssmtp.conf ${SSMTP_SETTINGS_PATH}
 #
 # CONFIGURE
 #
+MYSQL_DB_HOST=${DB_ENV_MYSQL_HOST:-db}
 
 find ${DOCUMENT_ROOT} -type f -name "*.docker" | while read F
 do
 	SETTINGS_PATH=`echo "${F}" | sed "s/\.docker$//"`
 	cp ${F} ${SETTINGS_PATH}
-	/bin/sed -i "s@{{ DB_HOST }}@db@" ${SETTINGS_PATH}
+	/bin/sed -i "s@{{ DB_HOST }}@${MYSQL_DB_HOST}@" ${SETTINGS_PATH}
 	/bin/sed -i "s@{{ DB_PORT }}@${DB_PORT_3306_TCP_PORT}@" ${SETTINGS_PATH}
 	/bin/sed -i "s@{{ DB_NAME }}@${DB_ENV_MYSQL_DATABASE}@" ${SETTINGS_PATH}
 	/bin/sed -i "s@{{ DB_USER }}@${DB_ENV_MYSQL_USER}@" ${SETTINGS_PATH}
