@@ -89,7 +89,7 @@ RUN apt-get update \
 
 
 # Piwik
-ENV PIWIK_VERSION 2.16.1
+ENV PIWIK_VERSION 3.0.4
 
 RUN cd /var/www/html && \
 	curl -L -O http://builds.piwik.org/piwik-${PIWIK_VERSION}.tar.gz && \
