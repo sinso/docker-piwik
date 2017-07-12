@@ -1,0 +1,13 @@
+version: '2'
+services:
+  piwik:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - "ENABLE_MASTER=true"
+    ports:
+      - "8080:80"
+    volumes:
+      - ./data/log/piwik/:/var/log/piwik
+    restart: always

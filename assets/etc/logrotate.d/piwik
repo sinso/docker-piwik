@@ -1,0 +1,14 @@
+/var/log/piwik/*log {
+  daily
+  rotate 5
+  size=10M
+  dateext
+  compress
+  delaycompress
+  missingok
+  notifempty
+  sharedscripts
+  postrotate
+      supervisorctl restart piwik
+  endscript
+}
