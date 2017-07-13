@@ -126,5 +126,11 @@ RUN cd /var/www/html && \
 
 ADD assets/entrypoint.sh /entrypoint.sh
 
+RUN set -ex; \
+	unlink /var/log/apache2/error.log; \
+	unlink /var/log/apache2/access.log; \
+	touch /var/log/error.log; \
+	touch /var/log/access.log
+
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["apache2-foreground"]
