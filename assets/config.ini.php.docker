@@ -6,6 +6,7 @@ username = "{{ DB_USER }}"
 password = "{{ DB_PASSWORD }}"
 dbname = "{{ DB_NAME }}"
 charset = "utf8"
+tables_prefix = "{{ PIWIK_TABLES_PREFIX }}"
 
 [General]
 proxy_client_headers[] = "HTTP_X_FORWARDED_FOR"

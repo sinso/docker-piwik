@@ -18,6 +18,7 @@ cp /opt/docker/ssmtp.conf ${SSMTP_SETTINGS_PATH}
 # CONFIGURE
 #
 MYSQL_DB_HOST=${DB_ENV_MYSQL_HOST:-db}
+PIWIK_TABLES_PREFIX=${PIWIK_TABLES_PREFIX:-''}
 
 find ${DOCUMENT_ROOT} -type f -name "*.docker" | while read F
 do
@@ -28,6 +29,7 @@ do
 	/bin/sed -i "s@{{ DB_NAME }}@${DB_ENV_MYSQL_DATABASE}@" ${SETTINGS_PATH}
 	/bin/sed -i "s@{{ DB_USER }}@${DB_ENV_MYSQL_USER}@" ${SETTINGS_PATH}
 	/bin/sed -i "s@{{ DB_PASSWORD }}@${DB_ENV_MYSQL_PASSWORD}@" ${SETTINGS_PATH}
+	/bin/sed -i "s@{{ PIWIK_TABLES_PREFIX }}@${PIWIK_TABLES_PREFIX}@" ${SETTINGS_PATH}
 	/bin/chown www-data:www-data ${SETTINGS_PATH}
 done
 
