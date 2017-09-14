@@ -52,12 +52,12 @@ RUN runtimeRequirements="libgeoip-dev" \
 	&& echo "extension=geoip.so" > /usr/local/etc/php/conf.d/ext-geoip.ini \
 	&& rm -rf /var/lib/apt/lists/*
 
-ADD assets/php.ini /usr/local/etc/php/conf.d/php.ini
+COPY assets/php.ini /usr/local/etc/php/conf.d/php.ini
 
 
 
 # locales
-ADD assets/locale.gen /etc/locale.gen
+COPY assets/locale.gen /etc/locale.gen
 RUN apt-get update \
 	&& apt-get install -y locales \
 	&& rm -r /var/lib/apt/lists/* \
@@ -77,7 +77,7 @@ RUN usermod -d /var/www/html www-data
 RUN apt-get update \
 	&& apt-get install -y ssmtp \
 	&& rm -rf /var/lib/apt/lists/*
-ADD assets/ssmtp.conf /opt/docker/ssmtp.conf
+COPY assets/ssmtp.conf /opt/docker/ssmtp.conf
 
 
 
@@ -89,7 +89,7 @@ RUN apt-get update \
 
 
 # Piwik
-ENV PIWIK_VERSION 3.0.4
+ENV PIWIK_VERSION 3.1.0
 
 RUN cd /var/www/html && \
 	curl -L -O http://builds.piwik.org/piwik-${PIWIK_VERSION}.tar.gz && \
@@ -100,10 +100,10 @@ RUN cd /var/www/html && \
 RUN wget -O misc/GeoIPCity.dat.gz http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz && \
 	gunzip misc/GeoIPCity.dat.gz
 
-ADD assets/config.ini.php.docker /var/www/html/config/config.ini.php.docker
+COPY assets/config.ini.php.docker /var/www/html/config/config.ini.php.docker
 
 # Piwik Cron
-ADD assets/piwik-archive /etc/cron.d/piwik-archive
+COPY assets/piwik-archive /etc/cron.d/piwik-archive
 
 # Plugin WebsiteGroups
 RUN mkdir -p /var/www/html/plugins/WebsiteGroups && \
@@ -124,7 +124,7 @@ RUN mkdir -p /var/www/html/plugins/ClickHeat && \
 RUN cd /var/www/html && \
 	chown -R www-data:www-data tmp config
 
-ADD assets/entrypoint.sh /entrypoint.sh
+COPY assets/entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["apache2-foreground"]
