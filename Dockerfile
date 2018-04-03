@@ -89,10 +89,10 @@ RUN apt-get update \
 
 
 # Piwik
-ENV PIWIK_VERSION 3.1.1
+ENV PIWIK_VERSION 3.4.0
 
 RUN cd /var/www/html && \
-	curl -L -O http://builds.piwik.org/piwik-${PIWIK_VERSION}.tar.gz && \
+	curl -L -O http://builds.matomo.org/piwik-${PIWIK_VERSION}.tar.gz && \
 	tar --strip 1 -xzf piwik-${PIWIK_VERSION}.tar.gz && \
 	rm piwik-${PIWIK_VERSION}.tar.gz && \
 	chown -R www-data:www-data tmp config
