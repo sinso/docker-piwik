@@ -89,7 +89,7 @@ RUN apt-get update \
 
 
 # Piwik
-ENV PIWIK_VERSION 3.4.0
+ENV PIWIK_VERSION 3.5.1
 
 RUN cd /var/www/html && \
 	curl -L -O http://builds.matomo.org/piwik-${PIWIK_VERSION}.tar.gz && \
