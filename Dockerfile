@@ -26,10 +26,8 @@ RUN apt-get update \
 		dnsutils \
 	&& rm -rf /var/lib/apt/lists/*
 
-
-
 # gd
-RUN buildRequirements="libpng12-dev libjpeg-dev libfreetype6-dev" \
+RUN buildRequirements="libpng-dev libjpeg-dev libfreetype6-dev" \
 	&& apt-get update && apt-get install -y ${buildRequirements} \
 	&& docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/lib \
 	&& docker-php-ext-install gd \
